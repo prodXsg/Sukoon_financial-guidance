@@ -1,6 +1,3 @@
-import { GoogleGenAI, Type } from "@google/genai";
-
-const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
 export interface FinancialGuidanceInput {
   item: string;
@@ -164,143 +161,81 @@ OUTPUT FIELDS REQUIRED:
 `;
 
   try {
-    let response: any;
-    try {
-      response = await ai.models.generateContent({
-        model: "gemini-3.8-flash",
-        contents: prompt,
-        config: {
-          responseMimeType: "application/json",
-          responseSchema: {
-            type: Type.OBJECT,
+    const config = {
+      responseMimeType: "application/json",
+      responseSchema: {
+        type: "OBJECT",
+        properties: {
+          decision: { type: "STRING", enum: ["GO", "CAUTION", "WAIT"] },
+          sharpInsight: { type: "STRING" },
+          lenses: {
+            type: "OBJECT",
             properties: {
-              decision: { type: Type.STRING, enum: ["GO", "CAUTION", "WAIT"] },
-              sharpInsight: { type: Type.STRING },
-              lenses: {
-                type: Type.OBJECT,
-                properties: {
-                  financial: { type: Type.STRING },
-                  emotional: { type: Type.STRING },
-                  practical: { type: Type.STRING },
-                  future: { type: Type.STRING }
-                },
-                required: ["financial", "emotional", "practical", "future"]
-              },
-              cautionFlag: { type: Type.STRING },
-              synthesis: { type: Type.STRING },
-              explanation: {
-                type: Type.OBJECT,
-                properties: {
-                  monthlyIncome: { type: Type.NUMBER },
-                  totalObligations: { type: Type.NUMBER },
-                  remainingBuffer: { type: Type.NUMBER },
-                  verdict: { type: Type.STRING, enum: ["GO", "CAUTION", "WAIT"] },
-                  reasoning: { type: Type.STRING },
-                  actionableAdvice: { type: Type.STRING }
-                },
-                required: ["monthlyIncome", "totalObligations", "remainingBuffer", "verdict", "reasoning", "actionableAdvice"]
-              },
-              smarterOptions: {
-                type: Type.ARRAY,
-                items: {
-                  type: Type.OBJECT,
-                  properties: {
-                    title: { type: Type.STRING },
-                    desc: { type: Type.STRING },
-                    icon: { type: Type.STRING },
-                    detailedPlan: { type: Type.STRING }
-                  },
-                  required: ["title", "desc", "icon", "detailedPlan"]
-                }
-              },
-              closing: { type: Type.STRING }
+              financial: { type: "STRING" },
+              emotional: { type: "STRING" },
+              practical: { type: "STRING" },
+              future: { type: "STRING" }
             },
-            required: ["decision", "sharpInsight", "lenses", "cautionFlag", "explanation"]
-          }
-        }
+            required: ["financial", "emotional", "practical", "future"]
+          },
+          cautionFlag: { type: "STRING" },
+          synthesis: { type: "STRING" },
+          explanation: {
+            type: "OBJECT",
+            properties: {
+              monthlyIncome: { type: "NUMBER" },
+              totalObligations: { type: "NUMBER" },
+              remainingBuffer: { type: "NUMBER" },
+              verdict: { type: "STRING", enum: ["GO", "CAUTION", "WAIT"] },
+              reasoning: { type: "STRING" },
+              actionableAdvice: { type: "STRING" }
+            },
+            required: ["monthlyIncome", "totalObligations", "remainingBuffer", "verdict", "reasoning", "actionableAdvice"]
+          },
+          smarterOptions: {
+            type: "ARRAY",
+            items: {
+              type: "OBJECT",
+              properties: {
+                title: { type: "STRING" },
+                desc: { type: "STRING" },
+                icon: { type: "STRING" },
+                detailedPlan: { type: "STRING" }
+              },
+              required: ["title", "desc", "icon", "detailedPlan"]
+            }
+          },
+          closing: { type: "STRING" }
+        },
+        required: ["decision", "sharpInsight", "lenses", "cautionFlag", "explanation"]
+      }
+    };
+
+    let text = "";
+    try {
+      const r = await fetch('/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt, model: "gemini-3.8-flash", config }),
       });
+      if (!r.ok) throw new Error('Generate failed');
+      const data = await r.json();
+      text = data.text;
     } catch (err: any) {
       console.warn("gemini-3.8-flash failed or busy, retrying with gemini-flash-latest:", err?.message);
-      response = await ai.models.generateContent({
-        model: "gemini-flash-latest",
-        contents: prompt,
-        config: {
-          responseMimeType: "application/json",
-          responseSchema: {
-            type: Type.OBJECT,
-            properties: {
-              decision: { type: Type.STRING, enum: ["GO", "CAUTION", "WAIT"] },
-              sharpInsight: { type: Type.STRING },
-              lenses: {
-                type: Type.OBJECT,
-                properties: {
-                  financial: { type: Type.STRING },
-                  emotional: { type: Type.STRING },
-                  practical: { type: Type.STRING },
-                  future: { type: Type.STRING }
-                },
-                required: ["financial", "emotional", "practical", "future"]
-              },
-              cautionFlag: { type: Type.STRING },
-              synthesis: { type: Type.STRING },
-              explanation: {
-                type: Type.OBJECT,
-                properties: {
-                  monthlyIncome: { type: Type.NUMBER },
-                  totalObligations: { type: Type.NUMBER },
-                  remainingBuffer: { type: Type.NUMBER },
-                  verdict: { type: Type.STRING, enum: ["GO", "CAUTION", "WAIT"] },
-                  reasoning: { type: Type.STRING },
-                  actionableAdvice: { type: Type.STRING }
-                },
-                required: ["monthlyIncome", "totalObligations", "remainingBuffer", "verdict", "reasoning", "actionableAdvice"]
-              },
-              smarterOptions: {
-                type: Type.ARRAY,
-                items: {
-                  type: Type.OBJECT,
-                  properties: {
-                    title: { type: Type.STRING },
-                    desc: { type: Type.STRING },
-                    icon: { type: Type.STRING },
-                    detailedPlan: { type: Type.STRING }
-                  },
-                  required: ["title", "desc", "icon", "detailedPlan"]
-                }
-              },
-              closing: { type: Type.STRING }
-            },
-            required: ["decision", "sharpInsight", "lenses", "cautionFlag", "explanation"]
-          }
-        }
+      const r = await fetch('/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt, model: "gemini-flash-latest", config }),
       });
+      if (!r.ok) throw new Error('Generate failed');
+      const data = await r.json();
+      text = data.text;
     }
 
-    console.log("RAW RESPONSE:", response.text);
+    console.log("RAW RESPONSE:", text);
 
-    let jsonText = "";
-    if (typeof response?.text === "string" && response.text.trim()) {
-      jsonText = response.text.trim();
-    } else if (typeof (response as any)?.text === "function") {
-      try {
-        const textVal = (response as any).text();
-        if (typeof textVal === "string" && textVal.trim()) {
-          jsonText = textVal.trim();
-        }
-      } catch (err) {
-        console.warn("Calling response.text() failed:", err);
-      }
-    }
-
-    if (!jsonText && response?.candidates?.[0]?.content?.parts) {
-      const parts = response.candidates[0].content.parts;
-      for (const part of parts) {
-        if (part && typeof part.text === "string" && part.text.trim()) {
-          jsonText = part.text.trim();
-          break;
-        }
-      }
-    }
+    let jsonText = (text || "").trim();
 
     if (jsonText.startsWith("```")) {
       jsonText = jsonText.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "").trim();
