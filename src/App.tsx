@@ -103,67 +103,130 @@ const MobileContainer = ({
   }, [activeTab, currentScreen]);
 
   return (
-    <div className={`relative w-full max-w-[450px] mx-auto h-[100dvh] sm:h-[850px] sm:rounded-[3rem] overflow-hidden flex flex-col shadow-2xl sm:my-8 border border-gray-100 transition-all duration-700 ${isDarkScreen ? 'bg-[#090A0F] border-white/10' : 'bg-white'}`}>
-      {/* Background Gradient */}
-      <div className={`absolute inset-0 z-0 transition-all duration-700 ${gradientClass}`}></div>
+    <div className="relative mx-auto my-auto select-none transition-all duration-300">
+      {/* Outer Realistic iPhone 16 Pro Chassis with Natural Titanium edge highlights */}
+      <div className="relative w-[385px] sm:w-[412px] h-[835px] sm:h-[862px] bg-gradient-to-b from-[#34373D] via-[#1E2025] to-[#121316] rounded-[54px] sm:rounded-[58px] p-[11px] sm:p-[12px] shadow-[0_35px_80px_-15px_rgba(0,0,0,0.25),0_15px_30px_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.22)] ring-1 ring-white/20">
+        
+        {/* Exterior Left Hardware Buttons */}
+        {/* Action Button */}
+        <div className="absolute -left-[3.5px] top-[110px] w-[3.5px] h-[28px] bg-gradient-to-r from-[#17181A] to-[#2E3137] rounded-l-[2px] border-l border-y border-white/20 shadow-[-1px_1px_2px_rgba(0,0,0,0.35)]" />
+        {/* Volume Up */}
+        <div className="absolute -left-[3.5px] top-[156px] w-[3.5px] h-[52px] bg-gradient-to-r from-[#17181A] to-[#2E3137] rounded-l-[2px] border-l border-y border-white/20 shadow-[-1px_1px_2px_rgba(0,0,0,0.35)]" />
+        {/* Volume Down */}
+        <div className="absolute -left-[3.5px] top-[220px] w-[3.5px] h-[52px] bg-gradient-to-r from-[#17181A] to-[#2E3137] rounded-l-[2px] border-l border-y border-white/20 shadow-[-1px_1px_2px_rgba(0,0,0,0.35)]" />
 
-      {/* Header — Clean with back button only, no profile icon */}
-      {currentScreen !== 0 && (
-        <div className={`relative z-10 px-8 pt-8 pb-4 flex items-center transition-colors duration-500 ${isDarkScreen ? 'text-white' : ''}`}>
-          <div className="flex items-center gap-3">
-            {onBack && (
-              <button 
-                onClick={onBack}
-                className={`p-2 rounded-full transition-colors ${isDarkScreen ? 'text-white hover:bg-white/10' : 'hover:bg-black/5 text-[#1A1A1A]'}`}
-              >
-                <ArrowLeft size={20} />
-              </button>
-            )}
-            <span className={`font-black text-xl tracking-tight transition-colors ${isDarkScreen ? 'text-white' : 'text-[#003B3B]'}`}>
-              Sukoon
-            </span>
+        {/* Exterior Right Hardware Buttons */}
+        {/* Side / Power Button */}
+        <div className="absolute -right-[3.5px] top-[170px] w-[3.5px] h-[68px] bg-gradient-to-l from-[#17181A] to-[#2E3137] rounded-r-[2px] border-r border-y border-white/20 shadow-[1px_1px_2px_rgba(0,0,0,0.35)]" />
+        {/* Camera Control / Capture Button */}
+        <div className="absolute -right-[2.5px] top-[575px] w-[2.5px] h-[60px] bg-[#1a1c20] rounded-r-[1px] border-r border-y border-white/10" />
+
+        {/* Subtle Antenna Breaks */}
+        <div className="absolute -left-[1px] top-[76px] w-[12px] h-[2.5px] bg-[#101114]/90" />
+        <div className="absolute -right-[1px] top-[76px] w-[12px] h-[2.5px] bg-[#101114]/90" />
+        <div className="absolute -left-[1px] bottom-[76px] w-[12px] h-[2.5px] bg-[#101114]/90" />
+        <div className="absolute -right-[1px] bottom-[76px] w-[12px] h-[2.5px] bg-[#101114]/90" />
+
+        {/* Top Speaker Ear Slit */}
+        <div className="absolute top-[6px] left-1/2 -translate-x-1/2 w-12 h-[3.5px] bg-[#0c0d10] rounded-full z-40" />
+
+        {/* Screen Display Enclosure with Ultra-thin uniform Bezel */}
+        <div className={`relative w-full h-full rounded-[44px] sm:rounded-[47px] overflow-hidden flex flex-col ring-1 ring-black/90 transition-all duration-700 ${isDarkScreen ? 'bg-[#090A0F]' : 'bg-white'}`}>
+          {/* Background Gradient */}
+          <div className={`absolute inset-0 z-0 transition-all duration-700 ${gradientClass}`}></div>
+
+          {/* iOS Dynamic Island & Status Bar */}
+          <div className="absolute top-0 left-0 right-0 h-[46px] z-40 px-7 pt-2 flex items-center justify-between text-black pointer-events-none select-none">
+            {/* Time */}
+            <span className="text-[13.5px] font-semibold tracking-tight text-[#111827]">9:41</span>
+
+            {/* Dynamic Island Pill */}
+            <div className="w-[110px] h-[28px] bg-black rounded-full flex items-center justify-between px-2.5 shadow-[0_0_1px_rgba(255,255,255,0.25)] pointer-events-auto">
+              <div className="w-[9.5px] h-[9.5px] rounded-full bg-[#0d131f] ring-1 ring-[#1e2a42] relative flex items-center justify-center">
+                <div className="w-[3px] h-[3px] rounded-full bg-[#3b82f6]/40 blur-[0.5px]" />
+              </div>
+              <div className="w-[5.5px] h-[5.5px] rounded-full bg-[#05070a]" />
+            </div>
+
+            {/* iOS System Icons */}
+            <div className="flex items-center gap-1.5 text-[#111827]">
+              <svg className="w-4 h-3.5 fill-current" viewBox="0 0 17 12">
+                <rect x="0" y="8" width="2.5" height="4" rx="0.75" />
+                <rect x="4.5" y="5.5" width="2.5" height="6.5" rx="0.75" />
+                <rect x="9" y="3" width="2.5" height="9" rx="0.75" />
+                <rect x="13.5" y="0.5" width="2.5" height="11.5" rx="0.75" />
+              </svg>
+              <span className="text-[10px] font-bold tracking-tighter">5G</span>
+              <div className="flex items-center">
+                <div className="w-5 h-2.5 border-[1.2px] border-current rounded-[3px] p-[1.5px] flex items-center">
+                  <div className="w-full h-full bg-current rounded-[1px]" />
+                </div>
+                <div className="w-[1px] h-1 bg-current rounded-r-[1px] ml-[0.5px]" />
+              </div>
+            </div>
           </div>
-        </div>
-      )}
 
-      {/* Main Content Area */}
-      <div 
-        ref={contentRef}
-        className={`relative z-10 flex-1 overflow-y-auto px-8 ${currentScreen === 0 ? 'pb-8 pt-4 flex flex-col justify-center min-h-full' : 'pb-28 pt-2'} scrollbar-none transition-colors duration-500 ${isDarkScreen ? 'text-white' : ''}`}
-      >
-        {children}
+          {/* Screen Glass Reflection Sheen */}
+          <div className="pointer-events-none absolute inset-0 rounded-[44px] bg-gradient-to-tr from-transparent via-transparent to-white/8 z-30" />
+
+          {/* In-app Header (with back button & Sukoon title) */}
+          {currentScreen !== 0 && (
+            <div className={`relative z-20 px-7 pt-13 pb-2 flex items-center transition-colors duration-500 ${isDarkScreen ? 'text-white' : ''}`}>
+              <div className="flex items-center gap-3">
+                {onBack && (
+                  <button 
+                    onClick={onBack}
+                    className={`p-2 rounded-full transition-colors ${isDarkScreen ? 'text-white hover:bg-white/10' : 'hover:bg-black/5 text-[#1A1A1A]'}`}
+                  >
+                    <ArrowLeft size={20} />
+                  </button>
+                )}
+                <span className={`font-black text-xl tracking-tight transition-colors ${isDarkScreen ? 'text-white' : 'text-[#003B3B]'}`}>
+                  Sukoon
+                </span>
+              </div>
+            </div>
+          )}
+
+          {/* Main Content Area */}
+          <div 
+            ref={contentRef}
+            className={`relative z-10 flex-1 overflow-y-auto px-7 ${currentScreen === 0 ? 'pb-8 pt-13 flex flex-col justify-center min-h-full' : 'pb-28 pt-2'} scrollbar-none transition-colors duration-500 ${isDarkScreen ? 'text-white' : ''}`}
+          >
+            {children}
+          </div>
+
+          {/* Bottom Navigation (Only visible on Screen 1 onwards and History) */}
+          {currentScreen !== 0 && (
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[88%] h-15 bg-white/95 backdrop-blur-md rounded-full border border-gray-100 shadow-xl z-30 flex items-center justify-around px-4">
+              {[
+                { id: 'home', icon: Home, label: 'Home' },
+                { id: 'history', icon: HistoryIcon, label: 'History' }
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => onTabChange?.(tab.id)}
+                  className={`flex flex-col items-center justify-center transition-all ${
+                    activeTab === tab.id ? 'text-[#1A1A1A] scale-110' : 'text-gray-400'
+                  }`}
+                >
+                  <tab.icon size={20} strokeWidth={activeTab === tab.id ? 2.5 : 2} />
+                  <span className="text-[8px] font-bold uppercase tracking-widest mt-1">{tab.label}</span>
+                  {activeTab === tab.id && (
+                    <motion.div layoutId="nav-dot" className="w-1 h-1 bg-[#1A1A1A] rounded-full mt-1" />
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* iOS Home Indicator Bar */}
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-[4px] bg-black/60 rounded-full z-40 pointer-events-none" />
+        </div>
       </div>
 
-      {/* Bottom Navigation (Only visible on Screen 1 onwards and History) */}
-      {currentScreen !== 0 && (
-        <>
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] h-16 bg-white/90 backdrop-blur-md rounded-full border border-gray-100 shadow-xl z-30 flex items-center justify-around px-4">
-            {[
-              { id: 'home', icon: Home, label: 'Home' },
-              { id: 'history', icon: HistoryIcon, label: 'History' }
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => onTabChange?.(tab.id)}
-                className={`flex flex-col items-center justify-center transition-all ${
-                  activeTab === tab.id ? 'text-[#1A1A1A] scale-110' : 'text-gray-400'
-                }`}
-              >
-                <tab.icon size={20} strokeWidth={activeTab === tab.id ? 2.5 : 2} />
-                <span className="text-[8px] font-bold uppercase tracking-widest mt-1">{tab.label}</span>
-                {activeTab === tab.id && (
-                  <motion.div layoutId="nav-dot" className="w-1 h-1 bg-[#1A1A1A] rounded-full mt-1" />
-                )}
-              </button>
-            ))}
-          </div>
-
-          {/* Home Indicator Mock */}
-          <div className="h-3 flex justify-center items-center z-20 pb-1">
-            <div className="w-24 h-1 bg-black/5 rounded-full"></div>
-          </div>
-        </>
-      )}
+      {/* Realistic Ambient Floor Drop Shadow on Pure White Background */}
+      <div className="w-[84%] h-[26px] bg-black/15 blur-2xl rounded-full mx-auto -mt-2 pointer-events-none" />
     </div>
   );
 };
@@ -2996,7 +3059,7 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F4F4F6] font-sans selection:bg-[#1A1A1A]/10 flex items-center justify-center p-0 sm:p-10">
+    <div className="min-h-screen bg-white font-sans selection:bg-[#003B3B]/10 flex items-center justify-center p-3 sm:p-8">
       <MobileContainer 
         gradientClass={activeTab === 'home' ? gradients[currentScreen] : 'screen-gradient-beige'} 
         onBack={(activeTab === 'home' && currentScreen > 0 && currentScreen !== 3) ? prevScreen : undefined}

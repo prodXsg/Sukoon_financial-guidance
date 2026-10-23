@@ -17,7 +17,7 @@
 }
 
 body {
-  @apply antialiased text-[#1A1A1A] bg-[#FDFDFD];
+  @apply antialiased text-[#1A1A1A] bg-white;
 }
 
 .iphone-screen {
