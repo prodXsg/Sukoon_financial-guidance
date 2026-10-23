@@ -1,63 +1,55 @@
-# Sukoon - Financial Decision Guidance
+# Sukoon
 
-A premium financial assistant app that helps users make confident purchase decisions with AI-powered insights, multi-factor analysis, and expert guidance.
+Know the cost before you commit.
 
-## Features
+**[Live App](https://sukoooon.vercel.app/)**
 
-- **Personalized Decision Guidance**: Simulates purchase decisions against income, monthly expenses, EMIs, and personal priorities (Stay comfortable, Be flexible, Think ahead).
-- **Sukoon Smart Checks**: Multi-factor financial model checks including savings rate, emergency fund safety, recurring ownership costs, and debt ratios.
-- **Smarter Alternatives**: Strategic recommendations such as lower-cost alternatives, waiting periods, split payments, or category substitutes.
-- **Expert Financial Advisory**: Connect with specialized financial advisors for personalized advice and booking sessions.
-- **Decision History**: Track and review past financial decisions locally.
+![Verdict Screen](docs/verdict.png)
 
-## Tech Stack
+## The Problem
 
-- **React 19** with TypeScript
-- **Vite** for fast modern bundling
-- **Tailwind CSS**
-- **Motion** (Framer Motion) for fluid interactions
-- **Lucide Icons**
-- **Google GenAI SDK** (`@google/genai`) for Gemini AI analysis
+When you're about to make a purchase, you feel the weight of the decision but can't see the full picture. You wonder: Is this right for me? Can I afford it now? Will I regret it later?
 
-## Getting Started
+## Unique Selling Proposition
 
-### 1. Clone the repository
+**Shows its math.** You see exactly how Sukoon arrived at its verdict through a transparent four-lens framework.
 
-```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
-cd YOUR_REPOSITORY
-```
+**Adapts to you.** Your answers shape how the calculation weighs each dimension. What matters most to you drives the outcome.
 
-### 2. Install dependencies
+**Always leaves a next step.** Even when the verdict is "Wait" or "Don't buy," Sukoon shows you the alternative strategies and when to revisit the decision.
 
-```bash
-npm install
-```
+## The Product
 
-### 3. Configure environment variables
+Every purchase decision is evaluated through four lenses:
 
-Create a `.env` file in the root directory:
+- **Financial**: Can you afford it now? Will it strain your finances?
+- **Emotional**: Does this align with what matters to you?
+- **Practical**: Will you actually use it? Does it solve a real problem?
+- **Future**: Does this move you closer to or further from your goals?
 
-```bash
-cp .env.example .env
-```
+Sukoon applies your chosen mindset—Safety-First, Be Flexible, or Think Ahead—to weight these lenses, then delivers a verdict: **Go**, **Wait**, or **Don't Buy**.
 
-Add your Gemini API key to `.env`:
+## Mindsets
 
-```env
-GEMINI_API_KEY="your-gemini-api-key-here"
-```
+- **Safety-First**: Prioritize financial stability and low risk.
+- **Be Flexible**: Balance all dimensions; adaptability matters.
+- **Think Ahead**: Weight long-term impact and goal alignment.
 
-### 4. Run the development server
+## Built So Far
 
-```bash
-npm run dev
-```
+- One-time purchase option
+- No-cost EMI and regular EMI calculations
+- Timing input (Today, This Week, This Month, Within 3 Months, Flexible, No Rush)
+- Smart Checks (financial health signals)
+- Alternative strategies when the verdict is Wait or Don't Buy
+- Feedback after your decision
 
-The app will be available at `http://localhost:3000` (or `http://localhost:5173`).
+## Roadmap
 
-### 5. Build for production
+- Follow-up after 3 weeks to see if your purchase decision played out
+- Decision history to track patterns over time
+- Subscription option for recurring purchases
 
-```bash
-npm run build
-```
+## Stack
+
+React 19, Vite, TypeScript, Tailwind CSS, Zustand, Google Gemini API (server-side), Vercel
