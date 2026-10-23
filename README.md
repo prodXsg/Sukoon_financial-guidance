@@ -4,7 +4,7 @@
 
 
 <p align="center">
-  <img src="./assets_sukoon-preview.png" alt="Sukoon app preview" width="400">
+  <img src="./assets_sukoon-preview.png" alt="Sukoon app preview" width="350">
 </p>
 
 
