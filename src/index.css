@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+}
+
+body {
+  @apply antialiased text-[#1A1A1A] bg-[#FDFDFD];
+}
+
+.iphone-screen {
+  background: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+}
+
+.screen-gradient-green {
+  background: radial-gradient(circle at 50% -20%, #DCFCE7 0%, transparent 70%);
+}
+
+.screen-gradient-beige {
+  background: radial-gradient(circle at 50% -20%, #F3F4F6 0%, transparent 70%);
+}
+
+.screen-gradient-blue {
+  background: radial-gradient(circle at 50% -20%, #DBEAFE 0%, transparent 70%);
+}
+
+.screen-gradient-dark {
+  background: radial-gradient(circle at 50% 30%, #151926 0%, #08090D 80%);
+}
+
+@keyframes progressFill {
+  0% {
+    width: 15%;
+  }
+  30% {
+    width: 50%;
+  }
+  70% {
+    width: 80%;
+  }
+  100% {
+    width: 95%;
+  }
+}
+
+.animate-progress-fill {
+  animation: progressFill 28s linear forwards;
+}
+

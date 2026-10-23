@@ -1,0 +1,7 @@
+{
+  "name": "Remix Sukoon",
+  "description": "Financial Decision Guidance - A premium financial assistant that helps users make confident purchase decisions with AI-powered insights and expert guidance.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
