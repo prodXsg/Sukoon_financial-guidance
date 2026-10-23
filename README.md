@@ -6,6 +6,8 @@ Know the "cost" before you commit.
 
 **[Live App](https://sukoooon.vercel.app/)**
 
+</div>
+
 ## The Problem
 
 When you're about to make a purchase, you feel the weight of the decision but can't see the full picture. You wonder: Is this right for me? Can I afford it now? Will I regret it later?
