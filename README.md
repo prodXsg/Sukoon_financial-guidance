@@ -2,6 +2,12 @@
 
 # Sukoon
 
+
+<p align="center">
+  <img src="./assets_sukoon-preview.png" alt="Sukoon app preview" width="300">
+</p>
+
+
 Know the "cost" before you commit.
 
 **[Live App](https://sukoooon.vercel.app/)**
