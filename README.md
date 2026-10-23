@@ -1,6 +1,8 @@
+ <div align="center">
+
 # Sukoon
 
-Know the cost before you commit.
+Know the "cost" before you commit.
 
 **[Live App](https://sukoooon.vercel.app/)**
 
@@ -33,21 +35,54 @@ Sukoon applies your chosen mindsetâ€”Safety-First, Be Flexible, or Think Aheadâ€
 - **Be Flexible**: Balance all dimensions; adaptability matters.
 - **Think Ahead**: Weight long-term impact and goal alignment.
 
-## Built So Far
+## How It Works
 
-- One-time purchase option
-- No-cost EMI and regular EMI calculations
-- Timing input (Today, This Week, This Month, Within 3 Months, Flexible, No Rush)
-- Smart Checks (financial health signals)
-- Alternative strategies when the verdict is Wait or Don't Buy
-- Feedback after your decision
+### The Calculation
+
+The evaluation process:
+
+1. **Collect inputs**: Purchase amount, product type, timing, financial situation, personal priorities
+2. **Score each lens**: Financial health check, emotional alignment, practical necessity, future goal impact (each scored 0-100)
+3. **Apply mindset weights**: Safety-First emphasizes Financial and Future; Be Flexible treats all equally; Think Ahead emphasizes Future and Emotional
+4. **Calculate weighted score**: Composite score determines the verdict threshold
+5. **Generate explanation**: AI interprets results and suggests next steps or alternatives
+
+**Pure math**: Lens scoring, weighting, and verdict determination.  
+**AI-driven**: Contextual explanations, personalized alternatives, and adaptive messaging via Google Gemini.
+
+### Built Features
+
+- One-time purchase and EMI (no-cost and regular) calculations
+- Flexible timing input (Today, This Week, This Month, Within 3 Months, Flexible, No Rush)
+- Smart Checks (financial health signals derived from your input)
+- Alternative strategies when verdict is Wait or Don't Buy
+- Instant feedback and next-step recommendations
 
 ## Roadmap
 
-- Follow-up after 3 weeks to see if your purchase decision played out
-- Decision history to track patterns over time
-- Subscription option for recurring purchases
+- Follow-up after 3 weeks to validate your decision
+- Decision history to identify patterns in your choices
+- Subscription and recurring purchase support
+- Integration with financial accounts for real-time data
 
-## Stack
+## Tech Stack
 
-React 19, Vite, TypeScript, Tailwind CSS, Zustand, Google Gemini API (server-side), Vercel
+- **Frontend**: React 19, Vite, TypeScript, Tailwind CSS
+- **State Management**: Zustand
+- **AI**: Google Gemini API (server-side)
+- **Deployment**: Vercel
+- **Styling**: Tailwind CSS with custom design tokens
+
+## Contributing
+
+This is a portfolio project. Feedback and suggestions are welcome. To contribute:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m 'Add your feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a Pull Request
+
+## Author
+
+Surya Gummalla
