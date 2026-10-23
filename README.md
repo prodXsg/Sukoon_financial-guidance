@@ -2,11 +2,9 @@
 
 # Sukoon
 
-
 <p align="center">
   <img src="./assets_sukoon-preview.png" alt="Sukoon app preview" width="350">
 </p>
-
 
 Know the "cost" before you commit.
 
@@ -35,7 +33,7 @@ Every purchase decision is evaluated through four lenses:
 - **Practical**: Will you actually use it? Does it solve a real problem?
 - **Future**: Does this move you closer to or further from your goals?
 
-Sukoon applies your chosen mindset—Safety-First, Be Flexible, or Think Ahead—to weight these lenses, then delivers a verdict: **Go**, **Wait**, or **Don't Buy**.
+Sukoon applies your chosen mindset, Safety-First, Be Flexible, or Think Ahead, to weight these lenses, then delivers a verdict: **Go**, **Wait**, or **Don't Buy**.
 
 ## Mindsets
 
